@@ -5,7 +5,7 @@
 * Download and install node latest version
 * Install npm package manager
 * Clone the project
-* In the root directory run `npm install`
+* In the root (comment-system) directory run `npm install`
 
 ## Usage
 
