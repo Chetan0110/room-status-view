@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
-import CommentsReducer from "./reducer_comments";
+import RoomsReducer from './reducer_rooms';
 
 const rootReducer = combineReducers({
   form: formReducer,
-  commentData: CommentsReducer
+  floorData: RoomsReducer
 });
 
 export default rootReducer;

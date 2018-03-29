@@ -1,29 +1,22 @@
 import axios from "axios";
-import { FETCH_COMMENTS } from "../types";
+import { FETCH_FLOORS, FETCH_ROOMS } from "../types";
 
-const ROOT_URL = `http://192.168.0.17:9000`;
+const ROOT_URL = `http://192.168.56.1:9000`;
 
-export function fetchAllComments() {
-  const request = axios.get(`${ROOT_URL}/comments`);
-
+export function getAllFloorNames() {
+  const request = axios.get(`${ROOT_URL}/floors`);
+  console.log("Inside action", request);
   return {
-    type: FETCH_COMMENTS,
+    type: FETCH_FLOORS,
     payload: request
   };
 }
+export function onFloorSelectionChanged(floor) {
+  const request = axios.get(`${ROOT_URL}/floors/${floor.id}`);
 
-export function addComment(replyComment) {
-  const request = axios.post(`${ROOT_URL}/comments`, replyComment);
+  // let wholeFloorObj = FloorData.filter(floorObj => floorObj.id === floor.id)[0];
   return {
-    type: FETCH_COMMENTS,
-    payload: request
-  };
-}
-
-export function deleteComment(commentId) {
-  const request = axios.delete(`${ROOT_URL}/comments/${commentId}`);
-  return {
-    type: FETCH_COMMENTS,
+    type: FETCH_ROOMS,
     payload: request
   };
 }

@@ -1,1 +1,2 @@
-export const FETCH_COMMENTS = "FETCH_COMMENTS";
+export const FETCH_FLOORS = 'FETCH_FLOORS';
+export const FETCH_ROOMS = 'FETCH_ROOMS';

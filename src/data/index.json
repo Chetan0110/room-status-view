@@ -1,58 +1,116 @@
-{
-  "active_user": "Abhishek",
-  "all_comments": [
+[
     {
-      "id": "1",
-      "author": "Abhishek",
-      "content": "This is Abhishek's first comment",
-      "replies": [
-        {
-          "id": "11",
-          "author": "Akanksha",
-          "content": "What is this comment dude?",
-          "replies": []
-        }
-      ]
+        "id": "groundFloor",
+        "label": "Ground Floor",
+        "rooms": [
+            {
+                "id": "firstRoom",
+                "label": "First Room",
+                "color": "skyblue",
+                "startX": "0",
+                "startY": "0",
+                "width": "80",
+                "height": "80"
+            },
+            {
+                "id": "secondRoom",
+                "label": "Second Room",
+                "color": "palegreen",
+                "startX": "90",
+                "startY": "90",
+                "width": "80",
+                "height": "80"
+            },
+            {
+                "id": "thirdRoom",
+                "label": "Third Room",
+                "color": "sandybrown",
+                "startX": "90",
+                "startY": "0",
+                "width": "80",
+                "height": "80"
+            },
+            {
+                "id": "fourthRoom",
+                "label": "Fourth Room",
+                "color": "palegreen",
+                "startX": "550",
+                "startY": "90",
+                "width": "130",
+                "height": "80"
+            }
+        ]
     },
     {
-      "id": "2",
-      "author": "Abhishek",
-      "content":
-        "This is Abhishek's second comment. And he said some blah blah blah, who does know that ? Nothing to bother about it. He has that habit of talking contineously. Hahahaha.... Lol...",
-      "replies": [
-        {
-          "id": "21",
-          "author": "Ayush",
-          "content": "Hahahaha... That is so true.",
-          "replies": []
-        }
-      ]
+        "id": "firstFloor",
+        "label": "First Floor",
+        "rooms": [
+            {
+                "id": "firstFloorFirstRoom",
+                "label": "First Room",
+                "color": "palegreen",
+                "startX": "0",
+                "startY": "0",
+                "width": "180",
+                "height": "80"
+            },
+            {
+                "id": "firstFloorSecondRoom",
+                "label": "Second Room",
+                "color": "skyblue",
+                "startX": "190",
+                "startY": "90",
+                "width": "180",
+                "height": "80"
+            }
+        ]
     },
     {
-      "id": "3",
-      "author": "Abhishek",
-      "content": "This is Abhishek's third comment",
-      "replies": []
+        "id": "secondFloor",
+        "label": "Second Floor",
+        "rooms": [
+            {
+                "id": "firstRoom",
+                "label": "First Room",
+                "color": "skyblue",
+                "startX": "0",
+                "startY": "0",
+                "width": "180",
+                "height": "80"
+            },
+            {
+                "id": "secondRoom",
+                "label": "Second Room",
+                "color": "sandybrown",
+                "startX": "190",
+                "startY": "90",
+                "width": "180",
+                "height": "80"
+            }
+        ]
     },
-
     {
-      "id": "4",
-      "author": "Ayush",
-      "content": "This is Ayush's first comment",
-      "replies": [
-        {
-          "id": "41",
-          "author": "Abhishek",
-          "content": "What is this comment now?",
-          "replies": []
-        }
-      ]
-    },
-    {
-      "id": "5",
-      "author": "Ayush",
-      "content": "This is Ayush's second comment",
-      "replies": []
+        "id": "thirdFloor",
+        "label": "Third Floor",
+        "rooms": [
+            {
+                "id": "firstRoom",
+                "label": "First Room",
+                "color": "sandybrown",
+                "startX": "0",
+                "startY": "0",
+                "width": "180",
+                "height": "80"
+            },
+            {
+                "id": "secondRoom",
+                "label": "Second Room",
+                "color": "skyblue",
+                "startX": "190",
+                "startY": "90",
+                "width": "180",
+                "height": "80"
+            }
+        ]
     }
-  ]
-}
+]

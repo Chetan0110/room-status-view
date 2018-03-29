@@ -1,64 +1,55 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import { fetchAllComments, addComment, deleteComment } from "../actions";
-import CommentList from "./comment_list";
-import CommentForm from "./comment_form";
+import FloorSelector from './floor_selector';
+import RoomOccupancy from './room_occupancy';
+import RoomOccupancy1 from './room_occupancy1';
+import OccupancyLegend from './occupancy_legend';
+
+import { getAllFloorNames } from '../actions';
 
 /**
- * Home component which displays all the comments from all the users.
- * On navigating to "host:port/" route, this component will be displayed
+ * Home component which displays dropdown to select floor
+ * and on selection of the perticular floor, occupancy level of all the rooms
+ * for that floor will be displayed using html canvas
  */
 class Home extends Component {
   constructor(props) {
     super(props);
     this.props = props;
-    this.onAddComment = this.onAddComment.bind(this);
   }
 
-  // Get all the comments before rendering this component
+  //To get all the available floors to choose
   componentWillMount() {
-    // Action call
-    this.props.fetchAllComments();
+    this.props.getAllFloorNames();
   }
 
-  // Since this func is passes as callback to comment_form,
-  // On enter or the Add button click,
-  // Form gets submitted and the execution will come here.
-  // So call action to add comment in the db
-  onAddComment(values) {
-    //Construct comment obj appropriately
-    const comment = {
-      parentCommentId: 0,
-      author: this.props.active_user,
-      content: values.contentcomment
-    };
-
-    //Action call
-    this.props.addComment(comment);
-  }
-
+  // Made two same components RoomOccupancy and RoomOccupancy1
+  // because the rendering of html canvas dies and displays same
+  // layout for every floor as you selected the first one
   render() {
-    const formStyle = {
-      width: "50%",
-      marginLeft: "28%",
-      marginBottom: "20px"
-    };
     return (
       <div className="appDiv">
-        <h2>Hello {this.props.active_user}!</h2>
-        {this.props.comments ? (
-          <CommentList
-            comments={this.props.comments}
-            active_user={this.props.active_user}
-          />
-        ) : null}
-
-        <CommentForm
-          placeholder="comment"
-          onSubmit={this.onAddComment}
-          formStyle={formStyle}
-        />
+        <h1>Room Occupancy Status</h1>
+        {
+          this.props.all_floors ? <FloorSelector floorList={this.props.all_floors} /> : null
+        }
+        <br />
+        {
+          this.props.roomsForFloor && this.props.current_floor === 'groundFloor' ? <RoomOccupancy roomList={this.props.roomsForFloor} /> : null
+        }
+        {
+          this.props.roomsForFloor && this.props.current_floor === 'firstFloor' ? <RoomOccupancy1 roomList={this.props.roomsForFloor} /> : null
+        }
+        {
+          this.props.roomsForFloor && this.props.current_floor === 'secondFloor' ? <RoomOccupancy roomList={this.props.roomsForFloor} /> : null
+        }
+        {
+          this.props.roomsForFloor && this.props.current_floor === 'thirdFloor' ? <RoomOccupancy1 roomList={this.props.roomsForFloor} /> : null
+        }
+        {
+          this.props.roomsForFloor ? <OccupancyLegend /> : null
+        }
       </div>
     );
   }
@@ -66,12 +57,11 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    active_user: state.commentData.active_user,
-    comments: state.commentData.all_comments
+    all_floors: state.floorData.all_floors,
+    current_floor: state.floorData.current_floor,
+    roomsForFloor: state.floorData.current_floor !== "" ? state.floorData.all_rooms : null
   };
 }
 export default connect(mapStateToProps, {
-  fetchAllComments,
-  addComment,
-  deleteComment
+  getAllFloorNames
 })(Home);
