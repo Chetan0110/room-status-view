@@ -4,13 +4,15 @@ class OccupancyLegend extends Component {
 
     // build Legend item rects and render it in the canvas
     componentDidMount() {
+        var c = document.getElementById("legendCanvas");
+        var ctx = c.getContext("2d");
         const legendItems = this.getLegendItemList();
         legendItems.forEach((item, index) => {
-            var c = document.getElementById(item.id);
-            var ctx = c.getContext("2d");
             ctx.fillStyle = item.color;
-            ctx.fillText(item.label, 500, 155);
-            ctx.fillRect(0, 0, 300, 150);
+            ctx.fillRect(index * 120, 0, 10, 120);
+            // ctx.fillStyle = "black";
+            // ctx.fontSize = "50px Arial";
+            // ctx.fillText(item.label, index * 120, 80);
         });
     }
 
@@ -29,17 +31,15 @@ class OccupancyLegend extends Component {
             width: "50%",
             border: "1px solid grey",
             height: "50px",
-            marginTop: "20px",
+            marginTop: "20px"
         };
         const legnedItems = this.getLegendItemList();
         return (
             <div style={style}>
+                <canvas style={{ width: "680px", height: "25px" }} id="legendCanvas"> </canvas>
                 {
                     legnedItems.map((item, index) => (
-                        <div key={index} style={{ float: "left", display: "inline-block" }}>
-                            <canvas style={{ marginLeft: index === 0 ? "0px" : "210px", width: "15px", height: "15px" }} id={item.id}> </canvas>
-                            <p style={{ marginLeft: index === 0 ? "0px" : "210px" }}>{item.label}</p>
-                        </div>
+                        <span style={{ marginLeft: index === 0 ? "0px" : "180px" }}>{item.label}</span>
                     ))
                 }
             </div>
